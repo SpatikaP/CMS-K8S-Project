@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  csi.storage.k8s.io/fstype: ext4
+  type: gp3
+  iops: "3000"
+  throughput: "750"
+  tagSpecification_1: "name=cms-k8s-project"
+reclaimPolicy: Retain
